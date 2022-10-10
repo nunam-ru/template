@@ -9,3 +9,7 @@ import './index.css';
 //   </React.StrictMode>,
 //   document.getElementById('root')
 // );
+
+function index(){
+  return(<div></div>);
+}
