@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Arial;
+    font-size: 100%;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    height: 100vh;
+}
+
+main {
+    max-width: 1440px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 1.9rem;
+}
+
+.header, 
+.footer {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: .7rem 1.5rem;
+    justify-content: space-between;
+}
+
+.header__logo img{
+    width: 100%;
+    height: 1.5rem;
+}
+
+.header__link{
+    color: #fff;
+    margin-left: .7rem;
+}
+
+.header__link:hover, .footer__link:hover{
+    color: gray;
+}
+
+.footer__nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+}
+
+.content__topHeader{
+    text-align: center;
+    position: relative;
+    font-size: 2.5rem;
+}
+
+.musicArtists__header, .tracks__header{
+    line-height: 24px;
+    margin: 20px auto;
+    position: relative;
+    text-align: center;
+}
+
+.musicArtists {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 10px;
+    margin: 0 3rem 3rem 3rem;
+}
+
+.musicArtists__itemWrap {
+    width: auto;
+    height: auto;
+    float: left;
+    list-style-type: none;
+    margin: 1rem 0;
+}
+
+.musicArtists__item{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.musicArtists__itemName{
+    color: #222;
+    margin-top: .7rem;  
+    font-size: inherit;
+}
+
+.musicArtist {
+    display: inline-block;
+    width:100%;
+    height:100%;
+}
+
+.musicArtist:hover {
+    text-decoration: underline;
+}
+
+
+.mediaItem{
+    order: -1;
+}
+
+.mediaItem__img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+}
+
+.tag {
+    color: #999;
+    font-size: 70%;
+    display: inline;
+    word-break: break-word;
+}
+
+.tag:nth-child(n+2)::before {
+    content: " ·";
+    font-weight: 400;
+    margin-right: auto;
+}
+
+.tracks {
+    grid-gap: 24px 20px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3,auto);
+    grid-template-rows: repeat(5,60px);
+    margin: 0 3rem;
+}
+
+.tracks__itemWrap {
+    padding-left: 0;
+    padding-right: 0;
+    list-style-type: none;
+}
+
+.tracks__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 60px;
+    padding-left: 75px;
+    position: relative;
+}
+
+.tracks__itemName {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tracks__mediaItem {
+    height: 60px;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.tracks__img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.track:hover {
+    text-decoration: underline;
+}
+
+.tracks__artistLinkgit :hover {
+    text-decoration: underline;
+}
