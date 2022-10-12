@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
 body {
     display: grid;
     grid-template-rows: min-content 1fr min-content;
@@ -36,13 +41,12 @@ main {
     height: 1.5rem;
 }
 
-.header__nav a{
+.header__link{
     color: #fff;
     margin-left: .7rem;
-    text-decoration: none;
 }
 
-.header__nav a:hover{
+.header__link:hover, .footer__link:hover{
     color: gray;
 }
 
@@ -69,15 +73,14 @@ main {
 }
 
 .musicArtists {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 10px;
     margin: 0 3rem 3rem 3rem;
 }
 
 .musicArtists__itemWrap {
-    width: 15%;
+    width: auto;
     height: auto;
     float: left;
     list-style-type: none;
@@ -103,11 +106,16 @@ main {
     height:100%;
 }
 
+.musicArtist:hover {
+    text-decoration: underline;
+}
+
+
 .mediaItem{
     order: -1;
 }
 
-.mediaItem__avatar img{
+.mediaItem__img{
     max-width: 100%;
     max-height: 100%;
     border-radius: 50%;
@@ -147,7 +155,7 @@ main {
     justify-content: center;
     min-height: 60px;
     padding-left: 75px;
-    position: relative;;
+    position: relative;
 }
 
 .tracks__itemName {
@@ -164,7 +172,15 @@ main {
     top: 0;
 }
 
-.tracks__avatar img{
+.tracks__img{
     max-width: 100%;
     max-height: 100%;
+}
+
+.track:hover {
+    text-decoration: underline;
+}
+
+.tracks__artistLinkgit :hover {
+    text-decoration: underline;
 }

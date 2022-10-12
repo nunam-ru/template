@@ -8,6 +8,15 @@
     box-sizing: border-box;
 }
 
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
 body {
     display: grid;
     grid-template-rows: min-content 1fr min-content;
@@ -31,19 +40,19 @@ main {
     justify-content: space-between;
 }
 
-.header__logo img{
+.header__logo{
     width: 100%;
     height: 1.5rem;
 }
 
-.header__nav a{
+.header__link{
     color: #fff;
     margin-left: .7rem;
-    text-decoration: none;
 }
 
-.header__nav a:hover{
+.header__link:hover, .footer__link:hover {
     color: gray;
+    text-decoration: none;
 }
 
 .footer__nav {
@@ -87,6 +96,10 @@ main {
     height: 100%;
 }
 
+.navlist__activeLink:hover {
+    text-decoration: none;
+}
+
 .navlist__link {
     display: flex;
     align-items: center;
@@ -97,6 +110,7 @@ main {
 
 .navlist__link:hover {
     border-bottom: 2px solid red;
+    text-decoration: none;
 }
 
 .content__top::after {
@@ -161,7 +175,7 @@ button {
     color: #cacaca;
 }
 
-.textColour__link {
+.textColour__container {
     font-size: 2rem;
     margin: 10px auto;
 }
@@ -185,17 +199,17 @@ button {
     height: 100%;
 }
 
-.cover__image {
+.cover__imageContainer {
     max-width: 100%;
     max-height: 100%;
 }
 
-.cover__image img{
+.cover__image{
     max-width: 100%;
     max-height: 100%;
 }
 
-.cover__image::after {
+.cover__imageContainer::after {
     background-image: linear-gradient(180deg,transparent 0,rgba(0,0,0,.35) 70%,rgba(0,0,0,.7));
     content: "";
     height: 100%;
@@ -217,24 +231,17 @@ button {
     text-shadow: 0 0 10px rgb(0 0 0 / 70%);
 }
 
-.grid__itemMainText a, .grid__itemAuxText a{
-    color: inherit;
-    text-decoration: none;
-}
-
-.more__link {
+.more__container {
     text-align: right;
     margin: 10px auto;
 }
 
-.more__link a {
+.more__link {
     color: #005399;
-    text-decoration: none;
 }
 
-.more__link a:hover {
+.more__link:hover {
     color: #005399;
-    text-decoration: underline;
 }
 
 .chartlist {
@@ -248,15 +255,6 @@ button {
     height: 50px;
     width: 100%;
     align-items: center;
-}
-
-.chartlist__row a{
-    color: #000;
-    text-decoration: none;
-}
-
-.chartlist__row a:hover{
-    text-decoration: underline;
 }
 
 .chartlist__row td {
