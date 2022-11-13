@@ -4,6 +4,7 @@
         <meta charset="UTF-8"/>
         <title>Last.fm | Search</title>
         <link rel="stylesheet" href="search.css"/>
+        <script src="search.js" defer></script>
     </head>
     <body>
         <header class="header">
@@ -30,17 +31,17 @@
                             </a>
                         </li>
                         <li class="navlist__item">
-                            <a href="" class="navlist__link link"">
+                            <a href="" class="navlist__link link artists_link"">
                                         Artists 
                             </a>
                         </li>
                         <li class="navlist__item">
-                            <a href="" class="navlist__link link">
+                            <a href="" class="navlist__link link albums_link">
                                         Albums 
                             </a>
                         </li>
                         <li class="navlist__item">
-                            <a href="" class="navlist__link link">
+                            <a href="" class="navlist__link link tracks_link">
                                         Tracks 
                             </a>
                         </li>
@@ -48,22 +49,25 @@
                 </nav>
             </div>
 
-            <div class="content">
+            <div class ="search_container">
                 <form class="search__form">
                     <input class="search__field" type="text" name="q" placeholder="Search for music…" required="">
                     <button class="search__reset" type="reset">Reset</button>
                     <button class="search__submit" type="submit">Search</button>
                 </form>
+            </div>
+
+            <div class="content">
 
                 <section class="artists">
                     <h2 class="textColour__container">
-                        <a href="" class="textColour__link link">
+                        <a href="" class="textColour__link link artists_link">
                             Artists
                         </a>
                     </h2>
-                    
-                    <ol class="grid__items">
-                        <li class="grid__item">
+                    <div class="loading_artists">Loading...</div>
+                    <ol class="grid__items searchArtists hidden">
+                        <!-- <li class="grid__item">
                             <div class="cover">
                                 <a href="" class="cover_imageLink link">
                                     <div class="cover__imageContainer">
@@ -82,26 +86,26 @@
                                     </p>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                         
                         
                     </ol>
         
                     <p class="more__container">
-                        <a href="" class="more__link link">More artists...</a>
+                        <a href="" class="more__link link artists_link">More artists...</a>
                     </p>
                     
                 </section> 
 
                 <section class="albums">
                     <h2 class="textColour__container">
-                        <a href="" class="textColour__link link">
+                        <a href="" class="textColour__link link albums_link">
                             Albums
                         </a>
                     </h2>
-                    
-                    <ol class="grid__items">
-                        <li class="grid__item">
+                    <div class="loading_albums">Loading...</div>
+                    <ol class="grid__items searchAlbums hidden">
+                        <!-- <li class="grid__item">
                             <div class="cover">
                                 <a href="" class="cover_imageLink link">
                                     <div class="cover__imageContainer">
@@ -117,27 +121,27 @@
                                     </p>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                         
                         
                     </ol>
         
                     <p class="more__container">
-                        <a href="" class="more__link link">More albums...</a>
+                        <a href="" class="more__link link albums_link">More albums...</a>
                     </p>
                     
                 </section>
 
                 <section class="tracks">
                     <h2 class="textColour__container">
-                        <a href="" class="textColour__link link">
+                        <a href="" class="textColour__link link tracks_link">
                             Tracks
                         </a>
                     </h2>
-                    
-                    <table class="chartlist">
+                    <div class="loading_chart">Loading...</div>
+                    <table class="chartlist hidden">
                         <tbody>
-                            <tr class="chartlist__row">
+                            <!-- <tr class="chartlist__row">
                                 <td class="chartlist__play">
                                     <a href="" class="chartlist__playButton link"></a>
                                 </td>
@@ -153,12 +157,12 @@
                                     <a href="" title="artist" class="link">Artist</a>
                                 </td>
                                 <td class="chartlist__duration">2:28</td>
-                            </tr>   
+                            </tr>    -->
                         </tbody>
                     </table>
 
                     <p class="more__container">
-                        <a href="" class="more__link link">More tracks...</a>
+                        <a href="" class="more__link link tracks_link">More tracks...</a>
                     </p>
 
                 </section>

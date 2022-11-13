@@ -116,8 +116,10 @@ main {
 }
 
 .mediaItem__img{
+    min-height: 100px;
+    min-width: 100px;
     max-width: 100%;
-    max-height: 100%;
+    max-height: auto;
     border-radius: 50%;
 }
 
@@ -134,11 +136,15 @@ main {
     margin-right: auto;
 }
 
+.tag a:hover {
+    text-decoration: underline;
+}
+
 .tracks {
     grid-gap: 24px 20px;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(3,auto);
+    grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(5,60px);
     margin: 0 3rem;
 }
@@ -158,7 +164,7 @@ main {
     position: relative;
 }
 
-.tracks__itemName {
+.tracks__itemName a{
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -181,6 +187,10 @@ main {
     text-decoration: underline;
 }
 
-.tracks__artistLinkgit :hover {
+.tracks__artistLink:hover {
     text-decoration: underline;
+}
+
+.hidden {
+    display: none;
 }
