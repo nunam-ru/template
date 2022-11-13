@@ -1,6 +1,13 @@
+/** API-ключ */
 let apiKey = "edf462b7f6b5ebf41647281e15134d48";
 
 
+
+/**
+ * Функция отправки запроса по ссылке 
+ * @param {string} link - Ссылка на API-метод
+ * @returns {any} Данные с сервера 
+ */
 async function fetchElement(link) {
     try {
         const response = await fetch(link);
@@ -15,6 +22,10 @@ async function fetchElement(link) {
 
 
 
+/**
+ * Функция получения чарта исполнителей
+ * @returns {any} Данные с сервера 
+ */
 function getTopArtists() {
     return fetchElement(
         "https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=" + apiKey + "&format=json&limit=12");
@@ -22,6 +33,11 @@ function getTopArtists() {
 
 
 
+/**
+ * Функция получения тегов исполнителя по его имени
+ * @param {string} artist - Имя исполнителя
+ * @returns {any} Данные с сервера 
+ */
 async function getArtistTags(artist){
     const data = await fetchElement(
         "https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=" + artist + "&api_key=" + apiKey + "&format=json");
@@ -30,6 +46,10 @@ async function getArtistTags(artist){
 
 
 
+/**
+ * Функция получения чарта треков
+ * @returns {any} Данные с сервера 
+ */
 async function getTopTracks() {
     return fetchElement(
         "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=" + apiKey + "&format=json&limit=15");
@@ -37,6 +57,12 @@ async function getTopTracks() {
 
 
 
+/**
+ * Функция получения тегов трека по его названию и имени исполнителя
+ * @param {string} artist - Имя исполнителя
+ * @param {string} track - Название трека
+ * @returns {any} Данные с сервера 
+ */
 async function getTrackTags(artist, track){
     const data = await fetchElement("https://ws.audioscrobbler.com/2.0/?method=track.gettoptags&artist=" + artist + "&track=" + track + "&api_key=" + apiKey + "&format=json");
     return data.toptags.tag.slice(0,3);
@@ -44,6 +70,9 @@ async function getTrackTags(artist, track){
 
 
 
+/**
+ * Функция обработки полученных данных чарта артистов и их отображения на странице
+ */
 async function sendArtistsToUI() {
     let data = await getTopArtists();
     for (let i=0; i<12; i++) {
@@ -85,6 +114,9 @@ async function sendArtistsToUI() {
 
 
 
+/**
+ * Функция обработки полученных данных чарта треков и их отображения на странице
+ */
 async function sendTracksToUI() {
     let data = await getTopTracks();
     for (let i=0; i<15; i++) {
@@ -132,6 +164,9 @@ async function sendTracksToUI() {
 
 
 
+/**
+ * Основная функция
+ */
 async function main() {
     sendArtistsToUI();
     sendTracksToUI();
