@@ -121,6 +121,7 @@ async function sendArtistsToUI() {
     document.querySelector(".searchArtists").classList.remove("hidden");
     if (data.results.artistmatches.artist.length == 0) {
         document.querySelector(".loading_artists").innerHTML = "Not found";
+        document.querySelector(".more_artists").remove();
     }
     else {
         document.querySelector(".loading_artists").remove();
@@ -164,6 +165,7 @@ async function sendAlbumsToUI() {
     document.querySelector(".searchAlbums").classList.remove("hidden");
     if (data.results.albummatches.album.length == 0) {
         document.querySelector(".loading_albums").innerHTML = "Not found";
+        document.querySelector(".more_albums").remove();
     }
     else {
         document.querySelector(".loading_albums").remove();
@@ -212,6 +214,7 @@ async function sendTracksToUI() {
     document.querySelector(".chartlist").classList.remove("hidden");
     if (data.results.trackmatches.track.length == 0) {
         document.querySelector(".loading_chart").innerHTML = "Not found";
+        document.querySelector(".more_tracks").remove();
     }
     else {
         document.querySelector(".loading_chart").remove();
