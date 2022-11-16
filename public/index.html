@@ -4,6 +4,7 @@
         <meta charset="UTF-8"/>
         <title>Last.fm</title>
         <link rel="stylesheet" href="index.css"/>
+        <script src="script.js" defer></script>
     </head>
     <body>
         <header class="header">
@@ -24,8 +25,9 @@
             <h2 class="musicArtists__header">Hot right now</h2>
 
             <div class="container">
-                <ol class="musicArtists">
-                    <li class="musicArtists__itemWrap">
+                <div class="loading_artists">Loading...</div>
+                <ol class="musicArtists hidden" id="artists">
+                    <!-- <li class="musicArtists__itemWrap">
                         <div class="musicArtists__item">   
                             
                             <section class="musicArtists__tags">
@@ -50,16 +52,16 @@
                                 </h3>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                     
                     
                     
                 </ol>
 
                 <h2 class="tracks__header">Popular tracks</h2>
-
-                <ol class="tracks">
-                    <li class="tracks__itemWrap">
+                <div class="loading_tracks">Loading...</div>
+                <ol class="tracks hidden" id="tracks">
+                    <!-- <li class="tracks__itemWrap">
                         <div class="tracks__item">
                             <h3 class="tracks__itemName">
                                 <a href="" class="track link">Lorem Ipsum</a>
@@ -88,7 +90,7 @@
                                 </span>
                             </div>         
                         </div>
-                    </li>
+                    </li> -->
                     
 
                     
@@ -99,7 +101,7 @@
         <footer class="footer">
             <div class="footer__copyright">2022</div>
             <nav class="footer__nav">
-                <a class="footer__link link">Github | nunam-ru</a>
+                <a href="https://github.com/nunam-ru" class="footer__link link">Github | nunam-ru</a>
             </nav>
         </footer>
     </body>

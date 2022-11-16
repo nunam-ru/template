@@ -139,6 +139,11 @@ main {
     outline: none;
 }
 
+.search_container {
+    padding-top: 1.9rem;
+    width: 700px;
+}
+
 .search__form {
     display: inline-block;
     position: relative;
@@ -188,8 +193,8 @@ button {
 }
 
 .grid__item {
-    width: auto;
-    height: auto;
+    width: 175px;
+    height: 175px;
     padding-top: 0;
     display: inline-block;
     position: relative;
@@ -270,10 +275,6 @@ button {
     width: 35px;
 }
 
-.chartlist__artist {
-    width: 50px;
-}
-
 .chartlist__duration {
     width: 50px;
 }
@@ -306,4 +307,3 @@ button {
     max-width: 100%;
     max-height: 100%;
 }
-
