@@ -1,3 +1,5 @@
+import placeholder from '../media/placeholder.webp'
+
 /**
  * API-ключ
  */
@@ -12,7 +14,7 @@ let apiKey = "edf462b7f6b5ebf41647281e15134d48";
  * @returns {string} Значение параметра
  */
 function getParameterByName(name, url) {
-    name = name.replace(/[\[\]]/g, "\\$&");
+    name = name.replace(/[\]]/g, "\\$&");
     let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
     if (!results) {return null;}
@@ -86,14 +88,16 @@ async function sendArtistsToUI() {
     let data = await getSearchArtists(searchQuery);
     for (let i=0; i<data.results.artistmatches.artist.length; i++) {
         const artist = data.results.artistmatches.artist[i].name;
-        const listeners = parseInt(data.results.artistmatches.artist[i].listeners).toLocaleString("en-EN");
+        const listeners = parseInt(data.results.artistmatches.artist[i].listeners);
         let statName = "listeners";
-        if (listeners % 10 == 1) { 
+        if (listeners % 10 === 1) { 
             statName = "listener";
         }
         const url = data.results.artistmatches.artist[i].url;
         let image = Object.values(data.results.artistmatches.artist[i].image[2])[0];
-        image == "" ? image = "placeholder.webp" : image;
+        if (image === "") {
+            image = placeholder;
+        }
         const template = `
             <li class="grid__item">
                 <div class="cover">
@@ -107,7 +111,7 @@ async function sendArtistsToUI() {
                             <a href="${url}" class="grid__itemLink link">${artist}</a> 
                         </p>
                         <p class="grid__itemAuxText">
-                            ${listeners} 
+                            ${listeners.toLocaleString("en-EN")} 
                             <span class="stat__name">
                                 ${statName}
                             </span>
@@ -119,7 +123,7 @@ async function sendArtistsToUI() {
         document.querySelector(".searchArtists").insertAdjacentHTML("beforeend", template);
     }
     document.querySelector(".searchArtists").classList.remove("hidden");
-    if (data.results.artistmatches.artist.length == 0) {
+    if (data.results.artistmatches.artist.length === 0) {
         document.querySelector(".loading_artists").innerHTML = "Not found";
         document.querySelector(".more_artists").remove();
     }
@@ -140,7 +144,9 @@ async function sendAlbumsToUI() {
         const artist = data.results.albummatches.album[i].artist;
         const url = data.results.albummatches.album[i].url;
         let image = Object.values(data.results.albummatches.album[i].image[3])[0];
-        image == "" ? image = "placeholder.webp" : image;
+        if (image === "") {
+            image = placeholder;
+        }
         const template = `
             <li class="grid__item">
                 <div class="cover">
@@ -163,7 +169,7 @@ async function sendAlbumsToUI() {
         document.querySelector(".searchAlbums").insertAdjacentHTML("beforeend", template);
     }
     document.querySelector(".searchAlbums").classList.remove("hidden");
-    if (data.results.albummatches.album.length == 0) {
+    if (data.results.albummatches.album.length === 0) {
         document.querySelector(".loading_albums").innerHTML = "Not found";
         document.querySelector(".more_albums").remove();
     }
@@ -186,7 +192,9 @@ async function sendTracksToUI() {
         const artist = track.artist;
         const artistUrl = url.substring(0, url.lastIndexOf("/"));
         let image = Object.values(track.image[0])[0];
-        image == "" ? image = "placeholder.webp" : image;
+        if (image === "") {
+            image = placeholder;
+        }
         const template = `
             <table class="chartlist">
                 <tbody>
@@ -212,7 +220,7 @@ async function sendTracksToUI() {
         document.querySelector(".chartlist").insertAdjacentHTML("beforeend", template);
     }
     document.querySelector(".chartlist").classList.remove("hidden");
-    if (data.results.trackmatches.track.length == 0) {
+    if (data.results.trackmatches.track.length === 0) {
         document.querySelector(".loading_chart").innerHTML = "Not found";
         document.querySelector(".more_tracks").remove();
     }
@@ -227,14 +235,15 @@ async function sendTracksToUI() {
  * Основная функция, проверяет наличие поискового запроса. 
  * Если запрос отсутствует, то на странице остается только поле для его ввода.
  */
-function main(){
+export function search(){
+    document.title = "Search | Last.fm";
     if (searchQuery == null) {
-        document.querySelector(".content__topHeader").remove();
-        document.querySelector(".content").remove();
+        document.querySelector(".search__content__topHeader").remove();
+        document.querySelector(".search__content").remove();
         document.querySelector(".content__top").remove();
     }
     else {
-        document.querySelector(".content__topHeader").innerText = "Search results for '" + searchQuery + "'";
+        document.querySelector(".search__content__topHeader").innerText = "Search results for '" + searchQuery + "'";
         document.querySelector(".search__field").setAttribute("value", searchQuery);
         document.querySelector(".search__reset").onclick = function() {
             document.querySelector(".search__field").setAttribute("value", "");
@@ -254,6 +263,3 @@ function main(){
         sendTracksToUI();
     }
 }
-
-
-main();

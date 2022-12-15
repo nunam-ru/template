@@ -40,7 +40,7 @@ function getTopArtists() {
  */
 async function getArtistTags(artist){
     const data = await fetchElement(
-        "https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=" + artist + "&api_key=" + apiKey + "&format=json");
+        "https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=" + encodeURIComponent(artist) + "&api_key=" + apiKey + "&format=json");
     return data.toptags.tag.slice(0,3);
 }
 
@@ -64,7 +64,7 @@ async function getTopTracks() {
  * @returns {any} Данные с сервера 
  */
 async function getTrackTags(artist, track){
-    const data = await fetchElement("https://ws.audioscrobbler.com/2.0/?method=track.gettoptags&artist=" + artist + "&track=" + track + "&api_key=" + apiKey + "&format=json");
+    const data = await fetchElement("https://ws.audioscrobbler.com/2.0/?method=track.gettoptags&artist=" + encodeURIComponent(artist) + "&track=" + encodeURIComponent(track) + "&api_key=" + apiKey + "&format=json");
     return data.toptags.tag.slice(0,3);
 }
 
@@ -123,6 +123,10 @@ async function sendTracksToUI() {
         const track = data.tracks.track[i];
         const artist = data.tracks.track[i].artist;
         let tags = await getTrackTags(artist.name, track.name);
+        if (tags.length < 3) {
+            tags[1] = tags[0];
+            tags[2] = tags[0];
+        }
         const image = Object.values(data.tracks.track[i].image[2])[0];
         const template = `
             <li class="tracks__itemWrap">
@@ -167,11 +171,7 @@ async function sendTracksToUI() {
 /**
  * Основная функция
  */
-async function main() {
+export async function main() {
     sendArtistsToUI();
     sendTracksToUI();
 }
-
-
-
-main();
