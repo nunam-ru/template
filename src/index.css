@@ -132,7 +132,7 @@ main {
 }
 
 .tag:nth-child(n+2)::before {
-    content: " ·";
+    content: " · ";
     font-weight: 400;
     margin-right: auto;
 }
@@ -196,7 +196,7 @@ main {
     display: none;
 }
 
-.notfound {
+.notFound {
     font-size: 10em;
 }
 

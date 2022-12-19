@@ -2,7 +2,7 @@
     text-decoration: underline;
 }
 
-.search__content {
+.found_content {
     padding-top: 1.9rem;
     width: 700px;
 }
@@ -91,7 +91,7 @@
 .search__form {
     display: inline-block;
     position: relative;
-    width: 100%;
+    width: 700px;
     height: 40px;
 }
 
@@ -116,7 +116,7 @@ button {
 }
 
 .search__reset {
-    background-color: #fff;
+    background-color: inherit;
     position: absolute;
     top: 10px;
     right: 80px;
