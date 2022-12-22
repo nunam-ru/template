@@ -10,20 +10,25 @@ import '../search.css';
 
 
 export const Search = () => {
-    const [query, setQuery] = useState([]);
+    const [query, setQuery] = useState(String);
 
-    const [searchArtists, setSearchArtists] = useState([]);
-    const [moreArtistsLink, setMoreArtistsLink] = useState([]);
+    const [searchArtists, setSearchArtists] = useState(Array);
+    const [moreArtistsLink, setMoreArtistsLink] = useState(String);
 
-    const [searchAlbums, setSearchAlbums] = useState([]);
-    const [moreAlbumsLink, setMoreAlbumsLink] = useState([]);
+    const [searchAlbums, setSearchAlbums] = useState(Array);
+    const [moreAlbumsLink, setMoreAlbumsLink] = useState(String);
 
-    const [searchTracks, setSearchTracks] = useState([]);
-    const [moreTracksLink, setMoreTracksLink] = useState([]);
+    const [searchTracks, setSearchTracks] = useState(Array);
+    const [moreTracksLink, setMoreTracksLink] = useState(String);
 
-    const [isLoadingSearchArtists, setLoadingSearchArtists] = useState([]);
-    const [isLoadingSearchAlbums, setLoadingSearchAlbums] = useState([]);
-    const [isLoadingSearchTracks, setLoadingSearchTracks] = useState([]);
+    const [isLoadingSearchArtists, setLoadingSearchArtists] = useState(Boolean);
+    const [isLoadedSearchArtists, setLoadedSearchArtists] = useState(Boolean);
+
+    const [isLoadingSearchAlbums, setLoadingSearchAlbums] = useState(Boolean);
+    const [isLoadedSearchAlbums, setLoadedSearchAlbums] = useState(Boolean);
+
+    const [isLoadingSearchTracks, setLoadingSearchTracks] = useState(Boolean);
+    const [isLoadedSearchTracks, setLoadedSearchTracks] = useState(Boolean);
 
     async function fetchArtists(text) { 
         setLoadingSearchArtists(true);
@@ -51,6 +56,7 @@ export const Search = () => {
         setMoreArtistsLink("https://www.last.fm/search/artists?q=" + text + "");
         setSearchArtists([...artists]);
         setLoadingSearchArtists(false);
+        setLoadedSearchArtists(true);
     }
 
     async function fetchAlbums(text) { 
@@ -73,6 +79,7 @@ export const Search = () => {
         setMoreAlbumsLink("https://www.last.fm/search/albums?q=" + text + "");
         setSearchAlbums([...albums]);
         setLoadingSearchAlbums(false);
+        setLoadedSearchAlbums(true);
     }
 
     async function fetchTracks(text) { 
@@ -96,6 +103,7 @@ export const Search = () => {
         setMoreTracksLink("https://www.last.fm/search/tracks?q=" + text + "");
         setSearchTracks([...tracks]);
         setLoadingSearchTracks(false);
+        setLoadedSearchTracks(true);
     }
 
 
@@ -117,15 +125,15 @@ export const Search = () => {
             </div>
             <div className="found_content">
                 <section className="artists">
-                    <SearchArtists searchArtists={searchArtists} isLoading={isLoadingSearchArtists} moreArtistsLink={moreArtistsLink}/> 
+                    <SearchArtists searchArtists={searchArtists} isLoading={isLoadingSearchArtists} isLoaded={isLoadedSearchArtists} moreArtistsLink={moreArtistsLink}/> 
                 </section>
 
                 <section className="albums">
-                    <SearchAlbums searchAlbums={searchAlbums} isLoading={isLoadingSearchAlbums} moreAlbumsLink={moreAlbumsLink}/> 
+                    <SearchAlbums searchAlbums={searchAlbums} isLoading={isLoadingSearchAlbums} isLoaded={isLoadedSearchAlbums} moreAlbumsLink={moreAlbumsLink}/> 
                 </section>
 
                 <section className="search__tracks">
-                    <SearchTracks searchTracks={searchTracks} isLoading={isLoadingSearchTracks} moreTracksLink={moreTracksLink}/> 
+                    <SearchTracks searchTracks={searchTracks} isLoading={isLoadingSearchTracks} isLoaded={isLoadedSearchTracks} moreTracksLink={moreTracksLink}/> 
                 </section>
             </div>  
         </main>

@@ -9,21 +9,26 @@ const TopTracks = ({topTracks, isLoading}) => {
         )
     }
 
-    while (isLoading === true) {
-        return (
-            <div className="loading_tracks">Loading...</div>
-        )
-    }
+    // while (isLoading === true) {
+    //     return (
+    //         <div className="loading_tracks">Loading...</div>
+    //     )
+    // }
 
     return (
-        topTracks.map((track) =>
-                <TopTracksItem
-                    key={track.track.name}
-                    track={track.track}
-                    tags={track.tags}
-                    artist={track.artist}
-                    image={track.image}/>
-            )
+        <>
+            {isLoading 
+                ? <div className="loading_artists">Loading...</div>
+                : topTracks.map((track) =>
+                    <TopTracksItem
+                        key={track.track.name}
+                        track={track.track}
+                        tags={track.tags}
+                        artist={track.artist}
+                        image={track.image}/>
+                )
+            }
+        </>
     );
 };
 

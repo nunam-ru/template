@@ -9,21 +9,26 @@ const TopArtists = ({topArtists, isLoading}) => {
         );
     }
 
-    while (isLoading === true) {
-        return (
-            <div className="loading_artists">Loading...</div>
-        );
-    }
-
+    // if (isLoading === true) {
+    //     return (
+    //         <div className="loading_artists">Loading...</div>
+    //     );
+    // }
+    
     return (
-        topArtists.map((artist) =>
-                <TopArtistsItem
+        <>
+            {isLoading 
+                ? <div className="loading_artists">Loading...</div>
+                : topArtists.map((artist) =>
+                    <TopArtistsItem
                     key={artist.name}
                     tags={artist.tags}
                     artist={artist.name}
                     url={artist.url}
                     image={artist.image}/>
             )
+            }
+        </>
     );
 };
 

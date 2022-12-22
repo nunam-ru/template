@@ -6,11 +6,11 @@ import '../index.css';
 
 export const Music = () => {
 
-    const [topArtists, setArtists] = useState([])
-    const [isLoadingArtists, setLoadingArtists] = useState(false);
+    const [topArtists, setArtists] = useState(Array)
+    const [isLoadingArtists, setLoadingArtists] = useState(Boolean);
 
-    const [topTracks, setTracks] = useState([])
-    const [isLoadingTracks, setLoadingTracks] = useState(false);
+    const [topTracks, setTracks] = useState(Array)
+    const [isLoadingTracks, setLoadingTracks] = useState(Boolean);
 
     async function fetchArtists() { 
         setLoadingArtists(true);
@@ -25,7 +25,7 @@ export const Music = () => {
                 url: artist_item.url,
             }
         }));
-
+        
         setArtists([...artist]);
         setLoadingArtists(false);
     }
