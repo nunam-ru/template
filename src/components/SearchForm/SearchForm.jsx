@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 const SearchForm = (props) => {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(String);
     
     return (
         <form className="search__form">
